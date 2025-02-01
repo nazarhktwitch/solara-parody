@@ -1,4 +1,4 @@
-A parody of [get-solara.dev](https://get-solara.dev/)
+A parody of [getsolara.dev](https://getsolara.dev/)
 
 You can rate it [here](https://get-solara.yhub.net/)
 
