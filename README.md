@@ -1,5 +1,5 @@
-A parody of get-solara.dev
+A parody of [get-solara.dev](https://get-solara.dev/)
 
-You can rate it [here](get-solara.yhub.net)
+You can rate it [here](https://get-solara.yhub.net/)
 
 Please wait, 70% finished
