@@ -1,2 +1,1 @@
-# solara-parody
-My first site that I made with CSS, JavaScript and HTML
+You can rate it [here](get-solara.yhub.net)
