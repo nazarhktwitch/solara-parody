@@ -14,9 +14,11 @@
   <meta property="og:image" content="https://i.ibb.co/K3YmF9k/image.jpg">
   <meta property="og:url" content="https://get-solara.yhub.net">
   <meta property="og:type" content="website">
-  <!-- Styles and Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="https://i.ibb.co/C5SFZzsK/image.jpg" type="image/jpg" sizes="16x16">
+  <!-- Preload Google Fonts -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  </noscript>
   <style>
     /* Main styles */
     body {
@@ -28,6 +30,7 @@
       overflow: auto; /* Enable scrolling */
       position: relative;
       z-index: 1;
+      scroll-behavior: smooth; /* Smooth scrolling */
     }
 
     /* Blur overlay */
@@ -67,15 +70,15 @@
 
     .content img {
       width: 100%;
-      max-width: 300px; /* Уменьшил размер изображения */
+      max-width: 300px;
       border-radius: 50%;
       animation: zoomIn 3s ease;
       margin: 20px;
-      transition: transform 0.3s ease; /* Анимация увеличения */
+      transition: transform 0.3s ease;
     }
 
     .content img:hover {
-      transform: scale(1.1); /* Увеличение при наведении */
+      transform: scale(1.1);
     }
 
     /* Button container */
@@ -107,113 +110,119 @@
       box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
     }
 
-    /* Button click animation */
-    .button.clicked {
-      animation: compress 0.5s ease forwards;
-    }
+	/* Button styles */
+	#download-button {
+	  background-color: #6b21a8;
+	  color: white;
+	  padding: 10px 20px;
+	  border: none;
+	  border-radius: 30px;
+	  cursor: pointer;
+	  transition: background-color 0.3s ease;
+	}
 
-    @keyframes compress {
-      0% {
-        border-radius: 30px;
-        width: auto;
-      }
-      50% {
-        border-radius: 50%;
-        width: 50px;
-        background-color: #4caf50; /* Green color for success */
-      }
-      100% {
-        border-radius: 50%;
-        width: 50px;
-        background-color: #4caf50;
-      }
-    }
+	#download-button:hover {
+	  background-color: #4caf50;
+	}
 
-    /* Password reveal effect */
-    .password-reveal {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(107, 33, 168, 0.9);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 10px;
-      font-size: 0.9rem;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-      z-index: 1;
-      white-space: nowrap;
-    }
+	.button {
+	  transition: border-radius 0.3s ease, width 0.3s ease, background-color 0.3s ease;
+	}
 
-    .button-container:hover .password-reveal {
-      opacity: 1;
-      visibility: visible;
-      transform: translate(-50%, 10px);
-    }
+	/* Password reveal effect */
+	.password-reveal {
+	  position: absolute;
+	  top: 100%;
+	  left: 50%;
+	  transform: translateX(-50%);
+	  background: rgba(107, 33, 168, 0.9);
+	  color: white;
+	  padding: 10px 20px;
+	  border-radius: 10px;
+	  font-size: 0.9rem;
+	  opacity: 0;
+	  visibility: hidden;
+	  transition: opacity 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), 
+				  transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+	  z-index: 1;
+	  white-space: nowrap;
+	}
 
-    /* Navbar */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 20px 0;
-      text-align: center;
-      z-index: 10;
-      transition: top 0.3s;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+	/* Password reveal on hover */
+	.button-container:hover .password-reveal {
+	  opacity: 1;
+	  visibility: visible;
+	  transform: translate(-50%, 10px);
+	}
 
-    .navbar img {
-      width: 60px;
-      height: 60px;
-      margin-left: 20px;
-      border-radius: 50%;
-      transition: transform 0.3s ease; /* Анимация увеличения */
-      cursor: pointer; /* Курсор при наведении */
-    }
+	/* Smooth fade-out when not hovered */
+	.button-container:not(:hover) .password-reveal {
+	  opacity: 0;
+	  visibility: hidden;
+	  transform: translate(-50%, 0); /* Optional: Adjust the position if needed */
+	}
 
-    .navbar img:hover {
-      transform: scale(1.1); /* Увеличение при наведении */
-    }
+	/* Navbar */
+	.navbar {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  background-color: rgba(0, 0, 0, 0.5);
+	  padding: 20px 0;
+	  text-align: center;
+	  z-index: 10;
+	  transition: top 0.3s;
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	}
 
-    /* Navbar download button container */
-    .navbar .button-container {
-      margin-right: 20px;
-    }
+	.navbar img {
+	  width: 60px;
+	  height: 60px;
+	  margin-left: 20px;
+	  border-radius: 50%;
+	  transition: transform 0.3s ease;
+	  cursor: pointer;
+	}
 
-    .navbar .download-button {
-      background-color: #6b21a8;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 1rem;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      text-decoration: none;
-    }
+	.navbar img:hover {
+	  transform: scale(1.1);
+	}
 
-    .navbar .download-button:hover {
-      background-color: #8b5cf6;
-      transform: translateY(-2px);
-      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
-    }
+	/* Navbar download button container */
+	.navbar .button-container {
+	  margin-right: 20px;
+	}
 
-    /* Navbar password reveal effect */
-    .navbar .password-reveal {
-      background: rgba(255, 255, 255, 0.1); /* Transparent background */
-      backdrop-filter: blur(10px); /* Blur effect */
-      border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
-    }
+	.navbar .download-button {
+	  background-color: rgba(107, 33, 168, 0.8);
+	  color: white;
+	  border: none;
+	  padding: 10px 20px;
+	  border-radius: 30px;
+	  cursor: pointer;
+	  font-size: 1rem;
+	  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+	  transition: all 0.3s ease;
+	  letter-spacing: 1px;
+	  text-transform: uppercase;
+	  text-decoration: none;
+	}
+
+	.navbar .download-button:hover {
+	  background-color: rgba(139, 92, 246, 0.9);
+	  transform: translateY(-2px);
+	  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+	}
+
+	/* Navbar password reveal effect */
+	.navbar .password-reveal {
+	  background: rgba(255, 255, 255, 0.1); /* Transparent background */
+	  backdrop-filter: blur(10px); /* Blur effect */
+	  border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+	}
 
     /* Reviews section */
     .reviews {
@@ -384,6 +393,37 @@
       }
     }
 
+	/* Scroll to top button with smooth fade effect */
+	.scroll-to-top {
+	  position: fixed;
+	  bottom: 20px;
+	  right: 20px;
+	  background-color: #6b21a8;
+	  color: white;
+	  border: none;
+	  border-radius: 50%;
+	  width: 50px;
+	  height: 50px;
+	  font-size: 1.5rem;
+	  cursor: pointer;
+	  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+	  transition: opacity 0.3s ease, visibility 0.3s ease;
+	  opacity: 0;
+	  visibility: hidden;
+	  z-index: 1000;
+	}
+
+	.scroll-to-top.visible {
+	  opacity: 1;
+	  visibility: visible;
+	}
+
+	.scroll-to-top:hover {
+	  background-color: #8b5cf6;
+	  transform: translateY(-5px);
+	  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+	}
+
     /* Footer */
     footer {
       position: relative;
@@ -464,99 +504,128 @@
   <!-- Particles effect -->
   <div class="particles" id="particles"></div>
 
+  <!-- Scroll to top button -->
+  <button class="scroll-to-top" id="scroll-to-top" title="Go to top">↑</button>
+
   <!-- YouTube audio -->
   <iframe id="youtube-audio" style="display: none;" src="https://www.youtube.com/embed/MvtWljsraTs?autoplay=1&mute=0&loop=1&playlist=MvtWljsraTs&controls=0&showinfo=0&rel=0"></iframe>
 
   <!-- Scripts -->
-  <script>
-    // Intersection Observer for navbar hiding
-    let lastScrollTop = 0;
-    const navbar = document.querySelector('.navbar');
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+		  // Intersection Observer for navbar hiding
+		  let lastScrollTop = 0;
+		  const navbar = document.querySelector('.navbar');
 
-    window.addEventListener('scroll', function() {
-      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      if (currentScroll > lastScrollTop) {
-        navbar.style.top = "-80px"; // Hide the navbar
-      } else {
-        navbar.style.top = "0"; // Show the navbar
-      }
-      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    });
+		  if (navbar) {
+			window.addEventListener('scroll', function () {
+			  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+			  if (currentScroll > lastScrollTop) {
+				navbar.style.top = "-80px"; // Hide the navbar
+			  } else {
+				navbar.style.top = "0"; // Show the navbar
+			  }
+			  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+			});
+		  }
 
-    // Create particles
-    const particlesContainer = document.getElementById('particles');
-    const numParticles = 100; // Number of particles
+		  // Create particles
+		  const particlesContainer = document.getElementById('particles');
+		  if (particlesContainer) {
+			const numParticles = 100; // Number of particles
 
-    for (let i = 0; i < numParticles; i++) {
-      const particle = document.createElement('div');
-      particle.classList.add('particle');
-      particle.style.left = `${Math.random() * 100}vw`;
-      particle.style.top = `${Math.random() * 100}vh`;
-      particle.style.animationDuration = `${Math.random() * 5 + 3}s`; // Random duration
-      particlesContainer.appendChild(particle);
-    }
+			for (let i = 0; i < numParticles; i++) {
+			  const particle = document.createElement('div');
+			  particle.classList.add('particle');
+			  particle.style.left = `${Math.random() * 100}vw`;
+			  particle.style.top = `${Math.random() * 100}vh`;
+			  particle.style.animationDuration = `${Math.random() * 5 + 3}s`; // Random duration
+			  particlesContainer.appendChild(particle);
+			}
+		  }
 
-    // Redirect to Dropbox after clicking the button
-    const downloadButton = document.getElementById('download-button');
-    downloadButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      downloadButton.classList.add('clicked'); // Add animation class
-      setTimeout(() => {
-        window.location.href = "https://www.dropbox.com/scl/fi/2d9yph6prpnh90irsagew/SolaraInstaller.rar?dl=1&e=1&rlkey=khqw8j04998o1ruqjy5koeq2g&st=n1jvzx2n";
-      }, 500); // 0.5 seconds delay
-    });
+		  // Download button without animation
+		  const downloadButton = document.getElementById('download-button');
+		  if (downloadButton) {
+			downloadButton.addEventListener('click', (e) => {
+			  e.preventDefault();
+			  window.location.href = "https://www.dropbox.com/scl/fi/2d9yph6prpnh90irsagew/SolaraInstaller.rar?dl=1&rlkey=khqw8j04998o1ruqjy5koeq2g";
+			});
+		  }
 
-    // Mouse trail effect
-    document.addEventListener('mousemove', (e) => {
-      const trail = document.createElement('div');
-      trail.classList.add('mouse-trail');
-      trail.style.left = `${e.pageX}px`;
-      trail.style.top = `${e.pageY}px`;
-      document.body.appendChild(trail);
+		  // Mouse trail effect
+		  document.addEventListener('mousemove', (e) => {
+			const trail = document.createElement('div');
+			trail.classList.add('mouse-trail');
+			trail.style.left = `${e.pageX}px`;
+			trail.style.top = `${e.pageY}px`;
+			document.body.appendChild(trail);
 
-      // Remove the trail element after the animation ends
-      setTimeout(() => {
-        trail.remove();
-      }, 1000); // Match the duration of the animation
-    });
+			// Remove the trail element after the animation ends
+			setTimeout(() => {
+			  trail.remove();
+			}, 1000);
+		  });
 
-    // YouTube audio player
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+		  // Scroll to top button logic
+		  const scrollToTopButton = document.querySelector('.scroll-to-top');
+		  if (scrollToTopButton) {
+			window.addEventListener('scroll', () => {
+			  if (window.pageYOffset > 100) {
+				scrollToTopButton.classList.add('visible');
+			  } else {
+				scrollToTopButton.classList.remove('visible');
+			  }
+			});
 
-    let player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('youtube-audio', {
-        height: '0',
-        width: '0',
-        videoId: 'MvtWljsraTs', // YouTube video ID
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        },
-        playerVars: {
-          autoplay: 1,
-          mute: 0,
-          loop: 1,
-          playlist: 'MvtWljsraTs', // Loop the video
-          controls: 0,
-          showinfo: 0,
-          rel: 0
-        }
-      });
-    }
+			scrollToTopButton.addEventListener('click', () => {
+			  window.scrollTo({
+				top: 0,
+				behavior: 'smooth'
+			  });
+			});
+		  }
 
-    function onPlayerReady(event) {
-      event.target.playVideo(); // Start playing the video
-    }
+		  // YouTube audio player
+		  const tag = document.createElement('script');
+		  tag.src = "https://www.youtube.com/iframe_api";
+		  const firstScriptTag = document.getElementsByTagName('script')[0];
+		  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    function onPlayerStateChange(event) {
-      if (event.data === YT.PlayerState.ENDED) {
-        player.playVideo(); // Restart the video when it ends
-      }
-    }
-  </script>
+		  let player;
+		  window.onYouTubeIframeAPIReady = function () {
+			player = new YT.Player('youtube-audio', {
+			  height: '0',
+			  width: '0',
+			  videoId: 'MvtWljsraTs',
+			  events: {
+				'onReady': onPlayerReady,
+				'onStateChange': onPlayerStateChange
+			  },
+			  playerVars: {
+				autoplay: 1,
+				mute: 0,
+				loop: 1,
+				playlist: 'MvtWljsraTs',
+				controls: 0,
+				showinfo: 0,
+				rel: 0
+			  }
+			});
+		  };
+
+		  function onPlayerReady(event) {
+			event.target.playVideo();
+		  }
+
+		  function onPlayerStateChange(event) {
+			if (event.data === YT.PlayerState.ENDED) {
+			  player.playVideo();
+			}
+		  }
+
+		  // Button click animation (removed)
+		});
+	</script>
 </body>
 </html>
